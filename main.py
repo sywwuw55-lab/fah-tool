@@ -67,7 +67,7 @@ def show_menu():
     clear()
     banner()
     print(f'''{LINE}
-{Y}  What do you want to know? Pick a number:{RS}
+{Y}  What do you want to do? Pick a number:{RS}
 {LINE}
 
   {G}1{RS}  →  {W}What is WiFuX? Introduction{RS}
@@ -78,6 +78,8 @@ def show_menu():
   {G}6{RS}  →  {W}Usage Examples (Copy-Paste ready){RS}
   {G}7{RS}  →  {W}Troubleshooting common errors{RS}
   {G}8{RS}  →  {W}Important warnings & rules{RS}
+  
+  {C}9  →  🚀 Start WiFi Scan / Attack (WiFuX){RS}
 
   {R}0{RS}  →  {W}Exit{RS}
 
@@ -91,13 +93,27 @@ def section_intro():
 {LINE}
 {Y}  1. What is WiFuX — Introduction{RS}
 {LINE}
-{INFO} {W}WiFuX{RS} is a WPS (Wi-Fi Protected Setup) security testing tool that runs in Termux.
+{INFO} {W}WiFuX{RS} is a WPS security testing tool that runs in Termux.
 ''')
+    pause()
+
+def start_wifi_tool():
+    clear()
+    banner()
+    print(f'''
+{LINE}
+{Y}  🚀 Starting WiFi Scanning & Attack Mode...{RS}
+{LINE}
+''')
+    print(f"{INFO} Initializing wireless interface...\n")
+    # এখানে আপনার মূল ওয়াইফাই স্ক্যানিং বা টুল রান করার কমান্ড দিন
+    os.system('python main.py -i wlan0 -K')
     pause()
 
 def main():
     handlers = {
         '1': section_intro,
+        '9': start_wifi_tool,
     }
 
     while True:
@@ -114,4 +130,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-
+	
